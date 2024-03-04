@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "eba2533b-033d-407a-9f8e-549ccf7db510",
+		"name": "Sleekflow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10133725",
+		"_collection_link": "https://www.postman.com/galactic-desert-719378/workspace/my-workspace/collection/10133725-eba2533b-033d-407a-9f8e-549ccf7db510?action=share&source=collection_link&creator=10133725"
+	},
+	"item": [
+		{
+			"name": "Admin Registration",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HazmiAdmin\",\r\n    \"email\": \"hazmihaizan@gmail.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:46193/api/Authentication/register-admin"
+			},
+			"response": []
+		},
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Hazmi\",\r\n    \"email\": \"hazmihaizan@gmail.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:46193/api/Authentication/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Log In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Hazmi\",\r\n    \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:46193/api/Authentication/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Todo Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSGF6bWkiLCJqdGkiOiI3MTM1MDJiOS05OTlmLTRhZjItYjlhYy03YzQ1NmU4NjQ4ZjkiLCJleHAiOjE3MDkyODcwMjYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6MjQyODgiLCJhdWQiOiJodHRwOiAvL2xvY2FsaG9zdDo0MjAwIn0.PC6HPu434xKXbgjX3cDAXHaL6ACa7PiLvh4gc7Jc9aY"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itemId\": 0,\r\n  \"itemName\": \"TestItem\",\r\n  \"itemDescription\": \"TestDescription\",\r\n  \"dueDate\": \"2024-03-01T02:52:52.305Z\",\r\n  \"itemStatus\": \"In Progress\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:46193/api/TodoItem"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Todo Item(s)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSGF6bWlBZG1pbiIsImp0aSI6ImM5MDA3ZTFlLTA1ZDktNDdjMS1iNTVjLTllMzU3ODM2MTA4OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzA5NTU3NTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjI0Mjg4IiwiYXVkIjoiaHR0cDogLy9sb2NhbGhvc3Q6NDIwMCJ9.8HTbVz-wLTyji6ST19CpfBQxLIdGYVItVIalkqL_Xa4"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:46193/api/TodoItem/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "46193",
+					"path": [
+						"api",
+						"TodoItem",
+						""
+					],
+					"query": [
+						{
+							"key": "sorts",
+							"value": "-itemName",
+							"disabled": true
+						},
+						{
+							"key": "filters",
+							"value": "itemStatus@=Completed",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get list of Todo Items"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Todo Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSGF6bWlBZG1pbiIsImp0aSI6ImM5MDA3ZTFlLTA1ZDktNDdjMS1iNTVjLTllMzU3ODM2MTA4OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzA5NTU3NTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjI0Mjg4IiwiYXVkIjoiaHR0cDogLy9sb2NhbGhvc3Q6NDIwMCJ9.8HTbVz-wLTyji6ST19CpfBQxLIdGYVItVIalkqL_Xa4"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:46193/api/TodoItem/3",
+				"description": "Delete Todo Item (Admin only)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Todo Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSGF6bWlBZG1pbiIsImp0aSI6IjIxNzMxNGM0LTczZmEtNDc3Zi1hYThiLWMzY2U0MjIxMzUwNCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzA5NTY4NjYzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjI0Mjg4IiwiYXVkIjoiaHR0cDogLy9sb2NhbGhvc3Q6NDIwMCJ9.dxQJLkgkX83KhXR2H_TFTIQrWJ0-ml0N9OdsK7AtslM"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itemId\": 1,\r\n  \"itemName\": \"TestItem1\",\r\n  \"itemDescription\": \"TestDescription\",\r\n  \"dueDate\": \"2024-03-04T13:09:46.784Z\",\r\n  \"itemStatus\": \"Completed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:46193/api/TodoItem/1"
+			},
+			"response": []
+		}
+	]
+}
